@@ -1,9 +1,15 @@
-
-import React from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
-import { Badge } from '@/components/ui/badge';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface NewsCardProps {
   title: string;
@@ -20,15 +26,15 @@ const NewsCard: React.FC<NewsCardProps> = ({
   date,
   category,
   imageUrl,
-  link
+  link,
 }) => {
   return (
     <Card className="card-shadow overflow-hidden h-full flex flex-col">
       <div className="w-full overflow-hidden">
-        <AspectRatio ratio={16/9} className="bg-muted">
-          <img 
-            src={imageUrl} 
-            alt={title} 
+        <AspectRatio ratio={16 / 9} className="bg-muted">
+          <img
+            src={imageUrl}
+            alt={title}
             className="w-full h-full object-cover"
           />
         </AspectRatio>
@@ -43,14 +49,12 @@ const NewsCard: React.FC<NewsCardProps> = ({
         <CardTitle className="text-lg line-clamp-2">{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow pb-2">
-        <CardDescription className="line-clamp-3">
-          {summary}
-        </CardDescription>
+        <CardDescription className="line-clamp-3">{summary}</CardDescription>
       </CardContent>
       <CardFooter className="pt-2">
-        <Link 
-          to={link} 
-          target="_blank" 
+        <Link
+          to={link}
+          target="_blank"
           rel="noopener noreferrer"
           className="text-gov-blue font-medium hover:text-gov-blue-dark hover:underline transition-colors"
         >

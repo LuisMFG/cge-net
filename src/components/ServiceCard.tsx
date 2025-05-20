@@ -1,9 +1,12 @@
-
-import React from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 interface ServiceCardProps {
   title: string;
@@ -20,36 +23,34 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   icon,
   link,
   linkText,
-  imageUrl
+  imageUrl,
 }) => {
   return (
-    <Card className="card-shadow h-full flex flex-col group">
-      <CardHeader>
-        {imageUrl ? (
-          <div className="w-full mb-4 overflow-hidden rounded-md">
-            <AspectRatio ratio={16/9}>
-              <img 
-                src={imageUrl} 
-                alt={title} 
-                className="w-full h-full object-cover"
+    <Link
+      to={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full"
+    >
+      <Card className="card-shadow h-full flex flex-col items-center text-center group hover:shadow-lg transition-shadow duration-200 cursor-pointer p-4">
+        <CardHeader className="flex flex-col items-center">
+          {imageUrl ? (
+            <div className="mb-4">
+              <img
+                src={imageUrl}
+                alt={title}
+                className="w-[120px] h-[120px] object-cover rounded-md"
               />
-            </AspectRatio>
-          </div>
-        ) : (
-          <div className="flex justify-center mb-4 text-gov-blue">
-            {icon}
-          </div>
-        )}
-        <CardTitle className="text-center text-xl">{title}</CardTitle>
-        <CardDescription className="text-center">{description}</CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow"></CardContent>
-      <CardFooter>
-        <Button asChild className="w-full bg-gov-blue hover:bg-gov-blue-dark">
-          <Link to={link} target="_blank" rel="noopener noreferrer">{linkText}</Link>
-        </Button>
-      </CardFooter>
-    </Card>
+            </div>
+          ) : (
+            <div className="mb-4 text-gov-blue">{icon}</div>
+          )}
+          <CardTitle className="text-xl">{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex-grow" />
+      </Card>
+    </Link>
   );
 };
 
